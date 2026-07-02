@@ -1,7 +1,5 @@
 # Rethinking Facial Deformation Representation for Speech-Driven 3D Facial Animation
 
-> 📝 **Under review at IEEE TCSVT**
-
 [Hyung Kyu Kim](https://github.com/kimhyungkyu-1208)<sup>1</sup>, Byungchan Hwang<sup>2</sup>, [Hak Gu Kim](https://www.irislab.cau.ac.kr)<sup>2</sup>
 
 <sup>1</sup> Department of Imaging Science and Arts, Chung-Ang University, South Korea
@@ -11,7 +9,7 @@
 
 ## Overview
 
-Most speech-driven 3D facial animation frameworks encode facial motion by flattening per-vertex displacements into a 1-d vector and projecting it through a fully connected layer — discarding the geometric relationships among vertices. We revisit this design and propose **Facial Spectral Projection (FSP)**, a geometry-aware spectral representation that encodes facial deformation with respect to the eigenbasis of a **deformation-aware Laplacian** defined on the facial mesh.
+Despite remarkable advances in temporal modeling, speech-driven 3D facial animation still relies on a conventional vertex-space representation that flattens facial deformation into a one-dimensional vector — ignoring the geometric structure of facial deformation. We rethink facial deformation representation from a geometric perspective and propose **Facial Spectral Projection (FSP)**, a plug-in module that replaces the conventional vertex-wise projection with a deformation-aware spectral representation, built from a **deformation-aware Laplacian** that jointly captures facial geometry and speech-related deformation dynamics.
 
 ## Method
 
@@ -24,14 +22,3 @@ Most speech-driven 3D facial animation frameworks encode facial motion by flatte
 - Consistent articulation-accuracy improvements (FVE, LVE, LDTW) across four backbones — FaceFormer, CodeTalker, Mimic, StreamingTalker — on VOCASET and BIWI.
 - Projection parameters reduced by **20×** on VOCASET (15.4M → 0.79M) and **91×** on BIWI (71.8M → 0.79M), decoupling model size from mesh resolution.
 - Spectral analyses show articulatory deformation concentrates in the low- and mid-frequency components of the deformation-aware basis, generalizing across FLAME, BIWI, and ARKit topologies.
-
-## Citation
-
-```bibtex
-@article{kim2026rethinking,
-  author  = {Kim, Hyung Kyu and Hwang, Byungchan and Kim, Hak Gu},
-  title   = {Rethinking Facial Deformation Representation for Speech-Driven 3D Facial Animation},
-  note    = {Under review at IEEE Transactions on Circuits and Systems for Video Technology},
-  year    = {2026}
-}
-```

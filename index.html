@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <!-- Search Engine -->
-  <meta name="description" content="Rethinking Facial Deformation Representation for Speech-Driven 3D Facial Animation. Facial Spectral Projection (FSP): a deformation-aware spectral representation that replaces vertex-wise linear projection, improving articulation accuracy across multiple backbones.">
+  <meta name="description" content="Rethinking Facial Deformation Representation for Speech-Driven 3D Facial Animation. Facial Spectral Projection (FSP): a plug-in module that replaces vertex-wise projection with a deformation-aware spectral representation, improving articulation accuracy across three benchmark datasets and four backbones.">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Rethinking Facial Deformation Representation for Speech-Driven 3D Facial Animation" />
-  <meta property="og:description" content="Facial Spectral Projection (FSP) represents facial deformation on the eigenbasis of a deformation-aware Laplacian, preserving mesh geometry and emphasizing articulation-critical regions. A drop-in replacement for vertex-wise linear projection." />
+  <meta property="og:description" content="Facial Spectral Projection (FSP): a plug-in module that replaces conventional vertex-wise projection with a deformation-aware spectral representation, jointly capturing facial geometry and speech-related deformation dynamics." />
   <meta property="og:url" content="https://cau-irislab.github.io/TCSVT26-Rethinking/"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimensions are 1200X630-->
-  <meta property="og:image" content="static/images/fig1_intro.png" />
+  <meta property="og:image" content="static/images/fig2_concept.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
   <meta name="twitter:title" content="Rethinking Facial Deformation Representation for Speech-Driven 3D Facial Animation">
-  <meta name="twitter:description" content="Facial Spectral Projection (FSP): a deformation-aware spectral representation for speech-driven 3D facial animation.">
-  <meta name="twitter:image" content="static/images/fig1_intro.png">
+  <meta name="twitter:description" content="Facial Spectral Projection (FSP): a plug-in deformation-aware spectral representation for speech-driven 3D facial animation.">
+  <meta name="twitter:image" content="static/images/fig2_concept.png">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Keywords for your paper to be indexed by-->
   <meta name="keywords" content="speech-driven 3D facial animation, facial deformation, spectral mesh analysis, graph Laplacian, deformation-aware Laplacian, facial spectral projection, TCSVT">
@@ -52,8 +52,10 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Rethinking Facial Deformation Representation for Speech-Driven 3D Facial Animation</h1>
-            <h2 class="title is-4" style="color: #666;">Under Review at IEEE TCSVT</h2>
+            <h1 class="title is-1 publication-title">
+              <img src="static/images/favicon.svg" alt="" style="height: 1.1em; vertical-align: -0.18em; margin-right: 0.15em; transform: rotate(-8deg); display: inline-block;">
+              Rethinking Facial Deformation Representation for Speech-Driven 3D Facial Animation
+            </h1>
                   <div class="is-size-5 publication-authors">
                     <!-- Paper authors -->
                     <span class="author-block">
@@ -113,26 +115,6 @@
 </section>
 
 
-<!-- Teaser figure -->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="subtitle has-text-centered" style="margin-bottom: 1.25rem;">
-        <strong>Facial Motion Is Structured, Not a Bag of Independent Vertices</strong>
-      </h2>
-      <figure class="image">
-        <img src="static/images/fig1_intro.png" alt="Visualization of displacement correlations in the lip region: frames of a 3D facial animation with lip-region vertices highlighted, and the pairwise Pearson correlation matrix of lip vertex displacement trajectories.">
-      </figure>
-      <p class="has-text-centered is-size-6 has-text-grey" style="margin-top: 0.75rem;">
-        Neighboring lip vertices move together during speech &mdash; displacement trajectories in the lip region are strongly correlated.
-        Flattening the mesh into a 1-d vector discards exactly this structure.
-      </p>
-    </div>
-  </div>
-</section>
-<!-- End teaser figure -->
-
-
 <!-- Paper abstract -->
 <section class="section hero">
   <div class="container is-max-desktop">
@@ -141,19 +123,18 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Most speech-driven 3D facial animation frameworks encode facial motion by flattening per-vertex
-            displacements into a 1-d vector and projecting it through a fully connected layer &mdash; a representation
-            that treats the mesh as an unordered collection of coordinates and ignores the geometric relationships
-            among vertices. We revisit this design and propose <strong><em>Facial Spectral Projection (FSP)</em></strong>,
-            a geometry-aware spectral representation that encodes facial deformation with respect to the eigenbasis of a
-            Laplacian defined on the facial mesh. To further align the basis with speech articulation, we introduce a
-            <strong>deformation-aware Laplacian</strong> whose edge weights are modulated by facial motion statistics,
-            allocating greater representational emphasis to articulation-critical regions such as the lips and jaw while
-            preserving facial geometry. FSP serves as a plug-in replacement for the conventional vertex-wise linear
-            projection and integrates into existing frameworks without modifying their remaining architectures.
-            Extensive experiments show that FSP consistently improves articulation accuracy across four backbones on
-            VOCASET and BIWI, while reducing the projection&rsquo;s learnable parameters by 20&ndash;91&times; and
-            decoupling model size from mesh resolution.
+            Despite remarkable advances in temporal modeling, speech-driven 3D facial animation still relies on a
+            conventional vertex-space representation that flattens facial deformation into a one-dimensional vector.
+            This representation ignores the geometric structure of facial deformation, limiting its ability to model
+            coordinated speech articulation. We rethink facial deformation representation from a geometric perspective
+            and propose <strong><em>Facial Spectral Projection (FSP)</em></strong>, a plug-in module that replaces the
+            conventional vertex-wise projection with a deformation-aware spectral representation. FSP constructs a
+            spectral basis from a <strong>deformation-aware Laplacian</strong> that jointly captures facial geometry
+            and speech-related deformation dynamics. Extensive experiments on three benchmark datasets and four
+            representative backbones demonstrate consistent improvements in articulation-related reconstruction
+            accuracy while reducing the learnable parameters of the projection layer by up to 91&times;. These results
+            show that deformation-aware spectral representation provides a more effective foundation than conventional
+            vertex-space projection for speech-driven 3D facial animation.
           </p>
         </div>
       </div>
@@ -361,7 +342,7 @@
         </figure>
         <div class="content has-text-justified" style="margin-bottom: 2rem;">
           <p>
-            <strong>Across an utterance.</strong> On &ldquo;<em>act right</em>&rdquo;, the conventional projection produces
+            <strong>Across an utterance.</strong> On &ldquo;<em>act right</em>&rdquo; (TFHP), the conventional projection produces
             excessive mouth opening and incomplete lip closure, whereas FSP preserves the articulatory transitions &mdash;
             continuous lip closure (/kt/), rounded lip shapes during the rhotic sound (/r/), and the final vowel-related
             opening &mdash; with visibly lower error around the lips and lower face.
@@ -434,7 +415,7 @@
           <p>
             <strong>Reconstruction fidelity.</strong> The deformation-aware basis reconstructs the lip region at the
             highest SNR on all three topologies, with the margin widening as <em>K</em> grows &mdash; at <em>K</em>=256,
-            +7.6 dB over the cotangent base on FLAME, +3.5 dB on BIWI, and +4.4 dB on ARKit. By construction, capacity is
+            +7.7 dB over the cotangent base on FLAME, +3.5 dB on BIWI, and +4.4 dB on ARKit. By construction, capacity is
             reallocated from near-static regions to the articulatory regions.
           </p>
         </div>
@@ -443,21 +424,6 @@
   </div>
 </section>
 <!-- End Spectral Analysis -->
-
-
-<!-- BibTeX citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@article{kim2026rethinking,
-  author  = {Kim, Hyung Kyu and Hwang, Byungchan and Kim, Hak Gu},
-  title   = {Rethinking Facial Deformation Representation for Speech-Driven 3D Facial Animation},
-  note    = {Under review at IEEE Transactions on Circuits and Systems for Video Technology},
-  year    = {2026}
-}</code></pre>
-    </div>
-</section>
-<!-- End BibTeX citation -->
 
 
   <footer class="footer">
